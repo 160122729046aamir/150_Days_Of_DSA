@@ -1,0 +1,19 @@
+class Solution(object):
+    def search(self, nums, target):
+        i=0
+        a=nums[0]
+        n=len(nums)
+        if a==target:
+            return 0
+        elif a>target:
+            for i in range(0,n):
+                if nums[n-i-1]==target:
+                    return n-i-1
+            
+            return -1
+        else:
+            for i in range(0,n):
+                if nums[i]==target:
+                    return i
+                
+            return -1        
