@@ -1,0 +1,19 @@
+def findMinDiff(nums,m):
+    if len(nums)==0 or m==0:
+        return 0
+    nums.sort()
+    if len(nums)<m:
+        return -1
+    maxdiff=nums[len(nums)-1]-nums[0]
+    n=len(nums)
+    for i in range(n-m+1):
+        mindiff=min(maxdiff,nums[m+i-1]-nums[i])
+    return mindiff
+
+arr = [12, 4, 7, 9, 2, 23, 25, 41,
+           30, 40, 28, 42, 30, 44, 48,
+           43, 50]
+m = 7  
+    
+print("Minimum difference is", findMinDiff(arr,m))
+
