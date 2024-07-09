@@ -1,0 +1,11 @@
+class Solution(object):
+    def averageWaitingTime(self, customers):
+        if len(customers)==1:
+            return customers[0][1]
+        x=customers[0][0]+customers[0][1]
+        W=[customers[0][1]]
+        for i in range(1,len(customers)):
+            x=max(x,customers[i][0])+customers[i][1]
+            wi=x-customers[i][0]
+            W.append(wi)
+        return sum(W)/len(W)
