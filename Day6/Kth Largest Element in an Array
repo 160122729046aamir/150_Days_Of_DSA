@@ -1,0 +1,25 @@
+class Solution(object):
+    def findKthLargest(self, nums, k):
+        nums.sort(reverse=True)
+        return nums[k-1]
+import heapq
+
+class Solution(object):
+    def findKthLargest(self, nums, k):
+        # Create a min-heap of size k
+        min_heap = []
+
+        for num in nums:
+            heapq.heappush(min_heap, num)
+            # If the heap size exceeds k, remove the smallest element
+            if len(min_heap) > k:
+                heapq.heappop(min_heap)
+
+        # The root of the min-heap is the kth largest element
+        return min_heap[0]
+
+# Example usage
+solution = Solution()
+nums = [3,2,1,5,6,4]
+k = 2
+print(solution.findKthLargest(nums, k))  # Output should be 5
