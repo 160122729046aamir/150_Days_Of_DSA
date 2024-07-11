@@ -1,0 +1,19 @@
+class Solution(object):
+    def reverseParentheses(self, s):
+        stack=[]
+        reverse_str=''
+        for i in range(len(s)):
+            if s[i]==')':
+                current=''
+                while stack[-1]!='(':
+                    current+=stack.pop()
+                stack.pop()
+                for st in current:
+                    stack.append(st)
+            else:
+                stack.append(s[i])
+        for j in range(len(stack)):
+            reverse_str+=stack[j]
+        return reverse_str
+
+            
