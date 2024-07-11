@@ -1,0 +1,31 @@
+from collections import Counter
+class Solution(object):
+    def productExceptSelf(self, nums):
+        p=0
+        total=1
+        total_excluded_zero=1
+        num=[]
+        d=Counter(nums)
+        for i in range(len(nums)):
+            if d[0]==1:
+                if nums[i]==0:
+                    p=i
+            total = nums[i]*total
+        for k in range(p):
+            total_excluded_zero=total_excluded_zero*nums[k]
+        for l in range(p+1,len(nums)):
+            total_excluded_zero=total_excluded_zero*nums[l]
+        for j in range(len(nums)):
+            if d[0]>1:
+                num.append(total)
+            elif  d[0]==1:
+                if nums[j]==0:
+                    num.append(total_excluded_zero)
+                else:
+                    num.append(total)
+            else:
+                num.append(total/nums[j])
+        return num
+        
+
+        
