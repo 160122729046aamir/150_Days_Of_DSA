@@ -1,0 +1,13 @@
+def find_pair(arr,sum):
+    arr.sort()
+    l=0
+    r=len(arr)-1
+    while l<r:
+        if arr[l]+arr[r]>sum:
+            r-=1
+        elif arr[l]+arr[r]<sum:
+            l+=1
+        elif  arr[l]+arr[r]==sum:
+            return (arr[l],arr[r])
+    return False
+print(find_pair([11, 15, 6, 8, 9, 0], 16))
