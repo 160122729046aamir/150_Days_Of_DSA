@@ -1,0 +1,18 @@
+def findMinOperations(arr,n):
+    l,r=0,n-1
+    operations=0
+    while l<r:
+        if arr[l]==arr[r]:
+            l+=1
+            r-=1
+        elif arr[l]>arr[r]:
+            r-=1
+            arr[r]+=arr[r+1]
+            operations+=1
+        else:
+            l+=1
+            arr[l]+=arr[l-1]
+            operations+=1
+    return operations
+a=[11, 14, 15, 11]
+print(findMinOperations(a,4))
