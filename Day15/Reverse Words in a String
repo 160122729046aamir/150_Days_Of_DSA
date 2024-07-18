@@ -1,0 +1,21 @@
+class Solution(object):
+    def reverseWords(self, s):
+        s=list(s.strip())
+        stack=[]
+        res=''
+        for i in reversed(s):
+            if i!=' ':
+                stack.append(i)
+            else:
+                while stack:
+                    res+=stack.pop()
+                if res[-1]!=' ' :
+                    res+=' '
+        
+        while stack:
+            res+=stack.pop()
+        return res
+
+                
+
+            
