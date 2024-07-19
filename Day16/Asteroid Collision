@@ -1,0 +1,19 @@
+class Solution(object):
+    def asteroidCollision(self, asteroids):
+        stack=[]
+        for speed in asteroids:
+            if speed>0:
+                stack.append(speed)
+            else:
+                while stack and stack[-1]>0 and speed:
+                    if abs(stack[-1]) > abs(speed):
+                        speed=False
+                    elif abs(stack[-1]) < abs(speed):
+                        stack.pop()
+                    else:
+                        stack.pop()
+                        speed=False
+                if speed: stack.append(speed)
+        return stack
+
+        
