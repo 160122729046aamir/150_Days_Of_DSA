@@ -1,0 +1,18 @@
+class Solution(object):
+    def restoreMatrix(self, rowSum, colSum):
+        ROWS,COLMNS=len(rowSum),len(colSum)
+        matrix=[[0]*COLMNS for i in range(ROWS)]
+        for i in range(ROWS):
+            matrix[i][0]=rowSum[i]
+        for c in range(COLMNS):
+            cur_col_sum=0
+            for r in range(ROWS):
+                cur_col_sum+=matrix[r][c]
+            r=0
+            while cur_col_sum>colSum[c]:
+                diff=min(cur_col_sum-colSum[c],matrix[r][c])
+                matrix[r][c]-=diff
+                matrix[r][c+1]+=diff
+                r+=1
+                cur_col_sum-=diff
+        return matrix
