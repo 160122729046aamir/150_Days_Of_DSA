@@ -1,0 +1,25 @@
+class Solution(object):
+    def fullJustify(self, words, maxWidth):
+        length=0
+        line=[]
+        result=[]
+        for word in words:
+            if len(line)+length+len(word)>maxWidth:
+                diff=maxWidth-length
+                spaces=diff//max(1,len(line)-1)
+                remainder=diff%max(1,len(line)-1)
+                for i in range(max(1,len(line)-1)):
+                    line[i]+=" "*(spaces)
+                    if remainder:
+                        line[i]+=" "
+                        remainder-=1
+                result.append(''.join(line))
+                length=0
+                line=[]
+            length+=len(word)
+            line.append(word)
+        last_line=" ".join(line)
+        trailing_space=maxWidth-len(last_line)
+        result.append(last_line+" "*trailing_space)
+        return result
+            
