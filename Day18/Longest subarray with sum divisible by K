@@ -1,0 +1,17 @@
+class Solution:
+	def longSubarrWthSumDivByK (self,arr,  n, K) :        
+	    maxl=0
+        cur_sum=0
+        remain_map={}
+        for i in range(n):
+            cur_sum+=arr[i]
+            remainder=cur_sum%K
+            if remainder==0:
+                maxl=max(maxl,i+1)
+            if remainder<0:
+                remainder+=K
+            if remainder in remain_map:
+                maxl=max(maxl,i-remain_map[remainder])
+            else:
+                remain_map[remainder]=i
+        return maxl
