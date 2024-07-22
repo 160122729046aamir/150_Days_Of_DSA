@@ -1,0 +1,9 @@
+class Solution(object):
+    def sortPeople(self, names, heights):
+        hashmap={n:i for i,n in enumerate(heights)}
+        heights.sort(reverse=True)
+        result=[]
+        for n in heights:
+            index=hashmap[n]
+            result.append(names[index])
+        return result
