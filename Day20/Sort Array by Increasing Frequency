@@ -1,0 +1,13 @@
+from collections import Counter
+class Solution(object):
+    def frequencySort(self, nums):
+        d=Counter(nums)
+        nums.sort(key= lambda num: (d[num],-num))
+        return nums
+        
+        
+
+        
+
+            
+        
