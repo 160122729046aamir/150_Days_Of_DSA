@@ -1,0 +1,14 @@
+class Solution(object):
+    def subarraysDivByK(self, nums, k):
+        remainder_map={0:1}
+        cursum=0
+        result=0
+        for i in range(len(nums)):
+            cursum+=nums[i]
+            remainder=cursum%k
+            if remainder in remainder_map:
+                result+=remainder_map[remainder]
+                remainder_map[remainder]+=1
+            else:
+                remainder_map[remainder]=1
+        return result
