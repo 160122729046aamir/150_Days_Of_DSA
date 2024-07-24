@@ -1,0 +1,15 @@
+class Solution(object):
+    def sortJumbled(self, mapping, nums):
+        mapped_value=[]
+        for num in nums:
+            st=''
+            s=str(num)
+            for i in range(len(s)):
+                index=int(s[i])
+                st+=str(mapping[index])
+            mapped_value.append((num,int(st)))
+        mapped_value.sort(key=lambda x: x[1])
+        return  [num for num,map_value in mapped_value]
+
+                
+        
