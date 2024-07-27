@@ -1,0 +1,15 @@
+class Solution(object):
+    def repeatedStringMatch(self, a, b):
+        count=0
+        res=''
+        while len(a)<len(b):
+            res+=a
+            count+=1
+        if b in res:
+            return count
+        res+=a
+        count+=1
+        if b in res:
+            return count
+        return -1
+        
