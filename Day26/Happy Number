@@ -1,0 +1,17 @@
+class Solution(object):
+    def isHappy(self, n):
+        def sumofsqrdgt(n):
+            output=0
+            while n:
+                a=n%10
+                output+=a**2
+                n=n//10
+            return output
+        hashset=set()
+        while n not in hashset:
+            hashset.add(n)
+            n=sumofsqrdgt(n)
+            if n==1:
+                return True
+        return False
+    
