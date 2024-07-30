@@ -1,0 +1,11 @@
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        unwantted=[]
+        intervals.sort()
+        for i in range(len(intervals)):
+            if i>0 and intervals[i][0]<=intervals[i-1][1]:
+                intervals[i]=[intervals[i-1][0],max(intervals[i][1],intervals[i-1][1])]
+                unwantted.append(intervals[i-1])
+        for unwant in unwantted:
+            intervals.remove(unwant)
+        return intervals
