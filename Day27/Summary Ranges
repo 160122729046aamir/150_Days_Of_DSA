@@ -1,0 +1,31 @@
+class Solution:
+    def summaryRanges(self, nums: List[int]) -> List[str]:
+        nums=sorted(set(nums))
+        interval=[]
+        result=[]
+        for i in range(len(nums)):
+            if i>0 and nums[i]-nums[i-1]>1:
+                strg=''
+                n=len(interval)
+                if n==1:
+                    strg+=str(interval[0])
+                else:
+                    strg+=str(interval[0])
+                    strg+='->'
+                    strg+=str(interval[n-1])
+                result.append(strg)
+                interval=[]
+                interval.append(nums[i])
+            else:
+                interval.append(nums[i])
+        if interval:
+            n=len(interval)
+            if n==1:
+                result.append(str(interval[0]))
+            else:
+                strg=''
+                strg+=str(interval[0])
+                strg+='->'
+                strg+=str(interval[n-1])
+                result.append(strg)
+        return result
