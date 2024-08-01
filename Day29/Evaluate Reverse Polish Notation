@@ -1,0 +1,27 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack=[]
+        for operand in tokens:
+            if operand=='+':
+                x2=int(stack.pop())
+                x1=int(stack.pop())
+                result=x2+x1
+                stack.append(str(result))
+            elif operand=='-':
+                x2=int(stack.pop())
+                x1=int(stack.pop())
+                result=x1-x2
+                stack.append(str(result))
+            elif operand=='*':
+                x2=int(stack.pop())
+                x1=int(stack.pop())
+                result=x2*x1
+                stack.append(str(result))
+            elif operand=='/':
+                x2=int(stack.pop())
+                x1=int(stack.pop())
+                result=int(x1/x2)
+                stack.append(str(result))
+            else:
+                stack.append(operand)
+        return int(stack[-1])
