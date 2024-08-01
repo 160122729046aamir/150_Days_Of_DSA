@@ -1,0 +1,14 @@
+def create_matrix(m, n):
+    res = [['0']*n for _ in range(m)]
+    i = 0
+
+    while i < (min(m, n) + 1) // 2:
+        for r in range(i, m - i):
+            for c in range(i, n - i):
+                if r == i or r == m - 1 - i or c == i or c == n - 1 - i:
+                    res[r][c] = 'X' if i % 2 == 0 else '0'
+        i += 1
+
+    return res
+
+print(create_matrix(4, 5))
