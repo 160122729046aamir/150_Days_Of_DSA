@@ -1,0 +1,14 @@
+class Solution:
+    def minSwaps(self, nums: List[int]) -> int:
+        ones_count=max_ones_count=0
+        N=len(nums)
+        l=0
+        total_ones=nums.count(1)
+        for r in range(2*N):
+            if nums[r%N]==1:
+                ones_count+=1
+            if r-l+1 > total_ones:
+                ones_count-=nums[l%N]
+                l+=1
+            max_ones_count=max(max_ones_count,ones_count)
+        return total_ones-max_ones_count
