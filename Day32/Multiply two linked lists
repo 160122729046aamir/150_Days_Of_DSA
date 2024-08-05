@@ -1,0 +1,21 @@
+'''
+class node:
+    def __init__(self):
+        self.data = None
+        self.next = None
+'''
+
+class Solution:
+    def multiply_two_lists(self, first, second):
+        if not first or not second:
+            return 0
+        num1=0
+        num2=0
+        mod=10**9+7
+        while first:
+            num1=(num1*10 + first.data)%mod
+            first=first.next
+        while second:
+            num2=(num2*10 + second.data)%mod
+            second=second.next
+        return (num1*num2)%mod
