@@ -1,0 +1,20 @@
+from collections import Counter
+class Solution:
+    def minimumPushes(self, word: str) -> int:
+        d=Counter(word)
+        res=[]
+        hashmap={}
+        res=[(word,count) for word,count in d.items()]
+        res.sort(key=lambda x: x[1],reverse=True)
+        iterator=0
+        n=len(res)
+        for i in range(0,n,8):
+            iterator+=1
+            j=0
+            while j<8 and i+j<n:
+                hashmap[res[i+j][0]]=iterator
+                j+=1
+        result=0
+        for i in word:
+            result+=hashmap[i]
+        return result
